@@ -1,0 +1,37 @@
+.welcomePage{
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  .welcomePage__boxes{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    @media(max-width: 700px) {
+    flex-direction: column;
+      align-items: center;
+    }
+  }
+  .welcomePage__box{
+    @media(max-width: 700px) {
+        margin-bottom: 1rem;
+        width: 60%;
+      padding: 1rem 0;
+      }
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.6);
+    width: 33%;
+    text-align: center;
+    margin: 0 1rem;
+    h1,i,span{
+      color: black;
+    }
+    i{
+      font-size: 3rem;
+      padding: 1rem 0;
+    }
+    h1{
+      margin-bottom: 1rem;
+    }
+
+  }
+}

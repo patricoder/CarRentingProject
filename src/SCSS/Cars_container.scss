@@ -1,0 +1,41 @@
+.cars__container{
+  padding: 2rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  .rented_alert{
+    text-align: center;
+    fonr-size: 1.5rem;
+    font-weight: 600;
+    color: red
+  }
+}
+.carcontainer{
+  background-color: white;
+  margin: 2rem 0;
+  border-radius: 10px;
+  h3{
+    margin-left: 1rem;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+  }
+  p{
+    margin-left: 2rem;
+    font-size: 1.5rem;
+    span{
+      color: red;
+      font-weight: 600;
+    }
+  }
+  .car__info{
+    display: flex;
+    justify-content: space-around;
+    div{
+      padding: .5rem .5rem;
+      background-color: lightgrey;
+      font-size: 2rem;
+      border-radius: 5px;
+    }
+    margin-bottom: .5rem;
+  }
+}

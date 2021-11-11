@@ -1,0 +1,40 @@
+@import "colors";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h1 {
+    font-weight: 300;
+    color:white;
+    span {
+      color: $iceberg;
+    }
+  }
+
+  nav {
+    ul {
+      li {
+        display: inline-block;
+        list-style: none;
+        margin-left: 1rem;
+        a {
+          color: white;
+          text-decoration: none;
+          border-radius: 1rem;
+          border: 1px solid $trufts_blue;
+          background-color: $trufts_blue;
+          padding: 0.37rem 1.5rem;
+          font-size: 1.5rem;
+          transition: .5s;
+          &:hover{
+            background-color:$prussian_blue ;
+            border-color:$prussian_blue ;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

@@ -13,7 +13,6 @@ const App = () => {
 
     return <LoginContext.Provider value={{loggedIn, setLoggedIn}}>
         <div className={"container"}>
-
             <Router>
                 <Header/>
                 <Switch>

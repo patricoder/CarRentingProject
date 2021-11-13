@@ -3,9 +3,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  a{
+    text-decoration: none;
+    color: black;
+  }
   .rented_alert{
     text-align: center;
-    fonr-size: 1.5rem;
+    font-size: 1.5rem;
     font-weight: 600;
     color: red
   }

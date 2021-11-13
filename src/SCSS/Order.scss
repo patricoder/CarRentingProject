@@ -1,0 +1,17 @@
+.orderform {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    input {
+      padding: .5rem 1rem;
+      display: inline-block;
+      width: 20rem;
+      margin-bottom: 1rem;
+    }
+  }
+}

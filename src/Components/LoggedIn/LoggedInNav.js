@@ -9,7 +9,7 @@ const LoggedInNav = () => {
         <ul>
             <NavLink activeStyle={style} exact to='/cars'>Cars</NavLink>
             <NavLink activeStyle={style} to='/history'>History</NavLink>
-            <NavLink activeStyle={style} to='/orders'>Orders</NavLink>
+            <NavLink activeStyle={style} to='/orders'>Order</NavLink>
         </ul>
     </div>
 };

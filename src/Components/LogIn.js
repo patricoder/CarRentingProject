@@ -19,7 +19,7 @@ const LogIn = () => {
             .then((userCredential) => {
                 // Signed in
                 const user = userCredential.user;
-                history.push('/');
+                history.push('/#/cars');
                 console.log(user);
             })
             .catch((error) => {

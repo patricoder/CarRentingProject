@@ -1,52 +1,79 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {collection, addDoc} from "firebase/firestore";
 import {db} from "../../Firebase/firebase";
+import {OrderContext, UserContext} from "../Context/Context";
+import "../../SCSS/Order.scss"
+
 const Orders = () => {
-  const [brand, setBrand] =  useState('')
-   const [model, setModel] =  useState('')
-    const [engine, setEngine] = useState("diesel")
-    const [hp,setHp] = useState('')
-    const [image, setImage]=useState('')
-    const [rented, setRented] =useState(false);
-    const [price, setPrice] = useState('');
-    const addDataToFirestore = async()=>{
-        let data = await addDoc(collection(db, "cars"),{
-            brand,
-            engineType: engine,
-            hp,
-            image,
-            model,
-            priceForDay: price,
-            rented
-        });
-        console.log("Document writtem with id: ", data.id)
+    const {user, order, setOrder} = useContext(UserContext);
+    const changeState = (e) => {
+        setOrder(prev => {
+            return {
+                ...prev,
+                [e.target.name]: e.target.value,
+            }
+        })
     }
-    const submitHandler = (e) => {
-      e.preventDefault();
-      console.log(brand,model,engine,hp,image,rented,price);
+    const changeCar = (e) => {
+        setOrder(prev => {
+            return {
+                ...prev,
+                car: {
+                    ...prev.car,
+                    [e.target.name]: e.target.value
+                }
+            }
+        })
+    }
+    const addDataToFirestore = async () => {
+        // let data = await addDoc(collection(db, "orders"),{});
+        let orderInfo = {
+            email: user.email,
+            name: order.name,
+            secondName: order.secondName,
+            Age: order.Age,
+            price: order.priceForDay,
+            howLong: order.howLong,
+            city: order.city,
+            car: {
+                brand: order.car.brand,
+                model: order.car.model
+            },
+            startingDate: order.startingDate,
+        }
+        console.log(orderInfo)
+    }
+    const sendOrder = (e) => {
+        e.preventDefault();
         addDataToFirestore();
     }
-    return (
-        <div>
-            <form onSubmit={submitHandler}>
-                Marka <input type={"text"} value={brand} onChange={e=>setBrand(e.target.value)}/>
-                Model <input type={"text"} value={model} onChange={e=>setModel(e.target.value)}/>
-                Silnik <select onChange={e=>setEngine(e.target.value)} value={engine}>
-                            <option value={"petrol"}>Petrol</option>
-                            <option value={"electric"}>Electric</option>
-                            <option value={"diesel"}>Diesel</option>
-                            <option value={"hybrid"}>Hybrid</option>
-                      </select>
-                HP <input type={"number"} min={1} value={hp} onChange={e=>setHp(e.target.value)}/>
-                Image link <input type={"text"}  value={image} onChange={e=>setImage(e.target.value)}/>
-                Rented <select onChange={e=>setRented(e.target.value)} value={rented}>
-                            <option value={true}>TRUE</option>
-                            <option value={false}>FALSE</option>
-                        </select>
-                PRICE FOR DAY <input type={"number"} min={1} value={price} onChange={e=>setPrice(e.target.value)}/>
-                <button type={"submit"}>Dodaj</button>
-            </form>
-        </div>
+    return (<OrderContext.Provider value={{order, setOrder}}>
+            <div className={"orderform"}>
+                <form onSubmit={sendOrder}>
+                    <input type={"text"} name={"email"} value={order.email} onChange={changeState}/>
+
+                    <input type={"text"} name={"brand"} value={order.car.brand} placeholder={"Brand"}
+                           onChange={changeCar}/>
+                    <input type={"text"} name={"model"} value={order.car.model} placeholder={"Model"}
+                           onChange={changeCar}/>
+
+                    <input type={"text"} name={"name"} value={order.name} placeholder={"Name"} onChange={changeState}/>
+                    <input type={"text"} name={"secondName"} value={order.secondName} placeholder={"Second name"}
+                           onChange={changeState}/>
+                    <input type={"number"} name={"Age"} value={order.Age} placeholder={"Age"} min={18}
+                           onChange={changeState}/>
+                    <input type={"string"} value={order.price + " zł/day"} placeholder={"Price for a day"}
+                           onChange={changeState}/>
+                    {order.howLong >= 30 && <p>Wynajem powyżej 30 dni? 30% rabatu</p>}
+                    <input type={"text"} name={"city"} value={order.city} placeholder={"City"} onChange={changeState}/>
+
+                    FROM<input type={"date"} value={order.startingDate} name={"startingDate"} onChange={changeState}/>
+                    HOW LONG <input type={"number"} value={order.howLong} name={"howLong"} onChange={changeState}/>
+                    <button type={"submit"}>Confirm</button>
+
+                </form>
+            </div>
+        </OrderContext.Provider>
     );
 };
 

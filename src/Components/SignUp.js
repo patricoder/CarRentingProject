@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import "../SCSS/Login.scss"
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
 import {app} from "../Firebase/firebase"
@@ -26,10 +26,12 @@ const SignUp = () => {
 
                 signInWithEmailAndPassword(auth, login, password)
                     .then((userCredential) => {
+                        console.log(userCredential)
                         history.push('/');
                     })
                     .catch((error) => {
                         console.log('Something gone wrong.')
+                        console.log(error)
                     });
                 console.log(user);
             })

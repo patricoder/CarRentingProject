@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "../../SCSS/LoggedIn.scss"
 import LoggedInHeader from "./LoggedInHeader";
 import LoggedInNav from "./LoggedInNav";
@@ -7,22 +7,40 @@ import Cars from './Cars'
 import History from "./History";
 import Orders from "./Orders";
 import {UserContext} from "../Context/Context";
+import {collection, getDocs} from "firebase/firestore";
+import {db} from "../../Firebase/firebase";
 const LoggedIn = ({signOut, user}) => {
     const [order, setOrder] = useState({
         email: user.email,
         name: '',
         secondName: '',
         Age: '18',
-        price: '',
-        howLong: '',
+        price: 0,
+        howLong: 0,
         city: '',
-        car: {
-            brand: '',
-            model: ''
-        },
+        car: 'main',
         startingDate: '',
     })
-    return<UserContext.Provider value={{user,order,setOrder}}>
+    const [cars, setCars] = useState([]);
+    cars.filter(car=>{
+        if(`${car.brand} ${car.model}` === order.car){
+            order.price = car.priceForDay;
+        }
+        return null;
+    })
+    const getData = async () => {
+        const data = await getDocs(collection(db, "cars"));
+        data.forEach(car=>{
+            setCars(prev=>[...prev, car.data()])
+        })
+        console.log("Dodawanie do stanu")
+    }
+
+    useEffect(()=>{
+        getData();
+    },[])
+
+    return<UserContext.Provider value={{user,order,setOrder, cars, setCars, getData}}>
         <div className={"content"}>
             <LoggedInHeader user={user} signOut={signOut}/>
             <Router>

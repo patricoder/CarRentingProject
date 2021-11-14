@@ -1,24 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import {collection, getDocs} from "firebase/firestore";
-import {db} from "../../Firebase/firebase";
+import React, {useContext} from 'react';
+// import {collection, getDocs} from "firebase/firestore";
+// import {db} from "../../Firebase/firebase";
 import Car from "./Car";
 import '../../SCSS/Cars_container.scss'
+import {UserContext} from "../Context/Context";
 
 const Cars = () => {
-    const [cars, setCars] = useState([]);
-    const getData = async () => {
-        let arr = [];
-        const data = await getDocs(collection(db, "cars"));
-        data.forEach(car=>{
-            setCars(prev=>[...prev, car.data()])
-        })
-        console.log("Dodawanie do stanu")
-
-    }
-
-    useEffect(() => {
-        getData();
-    }, [])
+    const {cars} = useContext(UserContext);
 
     return <div className={"cars__container"}>
         {cars.map(car=>{

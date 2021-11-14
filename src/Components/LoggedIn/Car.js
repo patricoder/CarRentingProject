@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import "../../SCSS/Cars_container.scss"
 import {useHistory} from "react-router-dom";
-import {OrderContext, UserContext} from "../Context/Context";
+import {UserContext} from "../Context/Context";
 
 const Car = ({vehicle}) => {
     let history = useHistory();
@@ -11,10 +11,7 @@ const Car = ({vehicle}) => {
             return{
                 ...prev,
                 price: vehicle.priceForDay,
-                car:{
-                    brand: vehicle.brand,
-                    model: vehicle.model
-                }
+                car: `${vehicle.brand} ${vehicle.model}`
             }
         })
         history.push('/orders');
@@ -37,7 +34,6 @@ const Car = ({vehicle}) => {
         </div>
         <h3>{vehicle.brand} {vehicle.model}</h3>
         <p>Price: <span>{vehicle.priceForDay}</span> zł / 1 day</p>
-        {console.log(vehicle.image)}
         <div className={"car__info"}>
             <div><i className="fas fa-gas-pump"></i> {vehicle.engineType}</div>
             <div><i className="fas fa-tachometer-alt"></i> {vehicle.hp} KM</div>

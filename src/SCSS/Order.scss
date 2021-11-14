@@ -1,17 +1,45 @@
+@import "./colors";
 .orderform {
   display: flex;
   justify-content: center;
   align-items: center;
 
-  form {
+  .orderform__inputs {
     display: flex;
     flex-direction: column;
-
+    input, select{
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      &:focus {
+        box-shadow: -1px 1px 15px 0px rgba(109, 174, 219, 1);
+      }
+    }
     input {
       padding: .5rem 1rem;
       display: inline-block;
       width: 20rem;
       margin-bottom: 1rem;
     }
+    select{
+      padding: .5rem;
+      margin-bottom: 1rem;
+    }
+    button{
+      color: white;
+      background-color: $trufts_blue;
+      text-transform: uppercase;
+      padding: .5rem;
+      border: none;
+      cursor: pointer;
+      &:hover{
+        background-color: $charcoal;
+      }
+    }
+  }
+  .discount{
+    margin-bottom: 1rem;
+    color: green;
+    font-weight: bold;
   }
 }

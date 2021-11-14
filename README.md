@@ -1,4 +1,5 @@
-Project is not finished yet.
+Project is still in progress.
+
 Rent&Drive 
 
 1. Clone or download repository.

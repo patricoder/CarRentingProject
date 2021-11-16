@@ -4,7 +4,7 @@ import { NavLink} from "react-router-dom";
 import {LoginContext} from "./Context/Context";
 
 const active={
-    fontWeight: "900",
+    backgroundColor: '#173753'
 }
 const Header = () => {
 const {loggedIn, setLoggedIn} = useContext(LoginContext);

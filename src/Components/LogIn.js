@@ -35,7 +35,7 @@ const LogIn = () => {
                    onChange={(e) => setPassword(e.target.value)}/>
             <button type={"submit"}>Log In</button>
         </form>
-        <Link to={"/signup"}>Alredy have an account?</Link>
+        <Link to={"/signup"}>Didn't have an account?</Link>
     </div>
 };
 

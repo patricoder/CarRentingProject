@@ -1,9 +1,10 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import "../../SCSS/Cars_container.scss"
 import {useHistory} from "react-router-dom";
 import {UserContext} from "../Context/Context";
 
 const Car = ({vehicle}) => {
+    const [hide, setHide] = useState(true)
     let history = useHistory();
     const {order,setOrder} = useContext(UserContext);
     const carOrder = () => {
@@ -17,13 +18,15 @@ const Car = ({vehicle}) => {
         history.push('/orders');
         console.log(order)
     }
-    return <div className={"carcontainer"} style={{
-        boxShadow: `0px 0px 19px 0px ${vehicle.rented ? "green" : "red"}`
+    const hideElement = () =>{
+        setHide(!hide);
+    }
+    return <div onClick={hideElement} className={"carcontainer"} style={{
+        boxShadow: `0px 0px 5px 0px ${!vehicle.rented && "red"}`
     }}>
-        {!vehicle.rented && <p className={"rented_alert"}>Alredy rented</p>}
         <div style={
             {
-                height: 300,
+                height: 270,
                 width: 400,
                 backgroundImage: `url(${vehicle.image})`,
                 backgroundSize: "contain",
@@ -38,7 +41,7 @@ const Car = ({vehicle}) => {
             <div><i className="fas fa-gas-pump"></i> {vehicle.engineType}</div>
             <div><i className="fas fa-tachometer-alt"></i> {vehicle.hp} KM</div>
         </div>
-        {vehicle.rented && <button onClick={carOrder}>Rent now</button> }
+        {vehicle.rented && <button className={"rent__now"} style={{display: hide && "none"}} onClick={carOrder}>Rent now</button> }
     </div>
 }
 export default Car;

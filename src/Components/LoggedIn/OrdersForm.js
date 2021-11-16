@@ -1,9 +1,9 @@
 import React from 'react';
 import "../../SCSS/Order.scss"
 const OrdersForm = ({cars,order, sendOrder,changeState}) => {
+
     return <form className={"orderform__inputs"} onSubmit={sendOrder}>
         <input type={"text"} name={"email"} value={order.email} onChange={changeState}/>
-
         <select name={"car"} onChange={changeState} value={order.car}>
             <option value={'main'}>chose a car...</option>
             {cars.map(car => {
@@ -13,7 +13,7 @@ const OrdersForm = ({cars,order, sendOrder,changeState}) => {
         </select>
 
         {order.price && <><p>PLN/DAY</p>
-            <input type={"string"} value={+order.price} placeholder={"Price for a day"}
+            <input name={"price"} type={"string"} value={+order.price} placeholder={"Price for a day"}
                    onChange={changeState}/>
             {order.howLong >= 30 && <p className={"discount"}>for rentals over 30 days, 30% discount</p>}</>}
 

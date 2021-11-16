@@ -3,6 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+
   a{
     text-decoration: none;
     color: black;
@@ -13,11 +14,22 @@
     font-weight: 600;
     color: red
   }
+
 }
 .carcontainer{
   background-color: white;
   margin: 2rem 0;
   border-radius: 10px;
+  cursor: pointer;
+  .rent__now{
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    color: white;
+    background-color: #173753;
+    border-radius: 4px;
+  }
   h3{
     margin-left: 1rem;
     text-transform: uppercase;

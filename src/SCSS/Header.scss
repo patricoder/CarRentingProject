@@ -1,5 +1,4 @@
 @import "colors";
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -12,7 +11,6 @@
       color: $iceberg;
     }
   }
-
   nav {
     ul {
       li {
@@ -23,7 +21,7 @@
           color: white;
           text-decoration: none;
           border-radius: 1rem;
-          border: 1px solid $trufts_blue;
+          border: none;
           background-color: $trufts_blue;
           padding: 0.37rem 1.5rem;
           font-size: 1.5rem;

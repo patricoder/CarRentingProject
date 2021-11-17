@@ -7,8 +7,10 @@ const OrdersForm = ({cars,order, sendOrder,changeState}) => {
         <select name={"car"} onChange={changeState} value={order.car}>
             <option value={'main'}>chose a car...</option>
             {cars.map(car => {
-                return <option value={`${car.brand} ${car.model}`}>{car.brand} {car.model}</option>
-            })}BMW
+                if(car.rented === true){
+                    return <option value={`${car.brand} ${car.model}`}>{car.brand} {car.model}</option>
+                }
+            })}
 
         </select>
 

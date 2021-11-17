@@ -10,7 +10,9 @@ import {UserContext} from "../Context/Context";
 import {collection, getDocs} from "firebase/firestore";
 import {db} from "../../Firebase/firebase";
 const LoggedIn = ({signOut, user}) => {
+    const [changes, setChanges] = useState(false);
     const [order, setOrder] = useState({
+        id: '',
         email: user.email,
         name: '',
         secondName: '',
@@ -37,9 +39,9 @@ const LoggedIn = ({signOut, user}) => {
 
     useEffect(()=>{
         getData();
-    },[])
+    },[changes])
 
-    return<UserContext.Provider value={{user,order,setOrder, cars, setCars, getData}}>
+    return<UserContext.Provider value={{user,order,setOrder, cars, setCars, getData, setChanges, changes}}>
         <div className={"content"}>
             <LoggedInHeader user={user} signOut={signOut}/>
             <Router>

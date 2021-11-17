@@ -11,6 +11,7 @@ const Car = ({vehicle}) => {
         setOrder(prev=>{
             return{
                 ...prev,
+                id: vehicle.id,
                 price: vehicle.priceForDay,
                 car: `${vehicle.brand} ${vehicle.model}`
             }
@@ -20,6 +21,7 @@ const Car = ({vehicle}) => {
     }
     const hideElement = () =>{
         setHide(!hide);
+        console.log(vehicle.rented)
     }
     return <div onClick={hideElement} className={"carcontainer"} style={{
         boxShadow: `0px 0px 5px 0px ${!vehicle.rented && "red"}`

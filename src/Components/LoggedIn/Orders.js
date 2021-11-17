@@ -1,12 +1,16 @@
 import React, {useContext} from 'react';
 import emailjs from 'emailjs-com';
+import { doc, updateDoc } from "firebase/firestore";
 import {OrderContext, UserContext} from "../Context/Context";
+import { collection, addDoc } from "firebase/firestore";
+import {db} from "../../Firebase/firebase";
 import {useHistory} from "react-router-dom";
 import "../../SCSS/Order.scss"
 import OrdersForm from "./OrdersForm";
 
 const Orders = () => {
-    const {user, order, setOrder, cars} = useContext(UserContext);
+    const {user, order, setOrder, cars, setCars, setChanges, changes} = useContext(UserContext);
+
     let history = useHistory();
     const sendEmail = (e) => {
         e.preventDefault();
@@ -15,11 +19,12 @@ const Orders = () => {
                 console.log(result.text);
                 alert('Email has been sent, check your inbox.');
                 history.push('/cars');
+                setCars([]);
+                setChanges(!changes);
             }, (error) => {
                 console.log('Something went wrong! :(', error);
             });
     };
-
     const changeState = (e) => {
         setOrder(prev => {
             return {
@@ -28,9 +33,10 @@ const Orders = () => {
             }
         })
     }
+
     const addDataToFirestore = async () => {
-        // let data = await addDoc(collection(db, "orders"),{});
-        let orderInfo = {
+         await addDoc(collection(db, "orders"),{
+            carId: order.id,
             email: user.email,
             name: order.name,
             secondName: order.secondName,
@@ -39,8 +45,11 @@ const Orders = () => {
             city: order.city,
             car: order.car,
             startingDate: order.startingDate
-        }
-        console.log(orderInfo)
+        });
+        const setRendedAsFalse = doc(db, "cars", order.id);
+        await updateDoc(setRendedAsFalse, {
+            rented: false
+        });
     }
     const sendOrder = (e) => {
         e.preventDefault();
@@ -54,8 +63,7 @@ const Orders = () => {
 
 return <OrderContext.Provider value={{order, setOrder}}>
     <div className={"orderform"}>
-        <OrdersForm order={order} cars={cars} changeState={changeState} sendOrder={sendOrder}/>
-
+        <OrdersForm key={order.id} order={order} cars={cars} changeState={changeState} sendOrder={sendOrder}/>
     </div>
 </OrderContext.Provider>
 }

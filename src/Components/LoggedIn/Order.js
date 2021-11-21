@@ -5,5 +5,4 @@ const Order = ({order}) => {
         <li>Order: {order.carId} {order.car} {Math.round(order.price)} zł / {order.howLong} days</li>
     );
 };
-
 export default Order;

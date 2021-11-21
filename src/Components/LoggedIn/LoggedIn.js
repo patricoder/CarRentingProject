@@ -29,6 +29,7 @@ const LoggedIn = ({signOut, user}) => {
         }
         return null;
     })
+
     const getData = async () => {
         const data = await getDocs(collection(db, "cars"));
         data.forEach(car=>{

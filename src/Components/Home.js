@@ -24,7 +24,6 @@ const Home = () => {
             if (user) {
                 // User is signed in, see docs for a list of available properties
                 // https://firebase.google.com/docs/reference/js/firebase.User
-
                 setLoggedIn(true)
                setUser( <LoggedIn signOut={()=>signUotMain()} user={user}/>);
             } else {

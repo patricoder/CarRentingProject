@@ -12,6 +12,7 @@ const Cars = () => {
         {cars.map(car=>{
             return <Car key={car.id} vehicle={car}/>
         })}
+        {console.log(cars)}
     </div>
 };
 

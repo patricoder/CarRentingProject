@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/CarRentingProject/static/css/main.d2e23f3a.chunk.css",
-    "main.js": "/CarRentingProject/static/js/main.8f475030.chunk.js",
-    "main.js.map": "/CarRentingProject/static/js/main.8f475030.chunk.js.map",
+    "main.js": "/CarRentingProject/static/js/main.0d4e78ff.chunk.js",
+    "main.js.map": "/CarRentingProject/static/js/main.0d4e78ff.chunk.js.map",
     "runtime-main.js": "/CarRentingProject/static/js/runtime-main.e78589cd.js",
     "runtime-main.js.map": "/CarRentingProject/static/js/runtime-main.e78589cd.js.map",
     "static/js/2.8ec6f1cf.chunk.js": "/CarRentingProject/static/js/2.8ec6f1cf.chunk.js",
@@ -16,6 +16,6 @@
     "static/js/runtime-main.e78589cd.js",
     "static/js/2.8ec6f1cf.chunk.js",
     "static/css/main.d2e23f3a.chunk.css",
-    "static/js/main.8f475030.chunk.js"
+    "static/js/main.0d4e78ff.chunk.js"
   ]
 }

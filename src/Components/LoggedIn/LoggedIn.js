@@ -42,7 +42,7 @@ const LoggedIn = ({signOut, user}) => {
     },[changes])
 
     return<UserContext.Provider value={{user,order,setOrder, cars, setCars, getData, setChanges, changes}}>
-        <div className={"content"}>
+        <div className={"content container"}>
             <LoggedInHeader user={user} signOut={signOut}/>
             <Router>
                 <LoggedInNav/>

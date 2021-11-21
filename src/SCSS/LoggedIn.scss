@@ -1,4 +1,8 @@
-
+.container{
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 1rem 1rem;
+}
 .content{
   height: 80vh;
   color: black;
@@ -24,6 +28,11 @@
       padding: 0.5rem 1rem;
       text-transform: uppercase;
       font-size: 1rem;
+      border: none;
+      background-color: #2892d7;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
     }
   }
   &__button{

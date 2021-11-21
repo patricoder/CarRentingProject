@@ -4,6 +4,7 @@ import {useHistory} from "react-router-dom";
 import {UserContext} from "../Context/Context";
 
 const Car = ({vehicle}) => {
+
     const [hide, setHide] = useState(true)
     let history = useHistory();
     const {order,setOrder} = useContext(UserContext);
@@ -23,9 +24,9 @@ const Car = ({vehicle}) => {
         setHide(!hide);
         console.log(vehicle.rented)
     }
-    return <div onClick={hideElement} className={"carcontainer"} style={{
-        boxShadow: `0px 0px 5px 0px ${!vehicle.rented && "red"}`
-    }}>
+
+
+    return <div onClick={hideElement} className={!vehicle.rented ? "rented" : "notRented"}>
         <div style={
             {
                 height: 270,

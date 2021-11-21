@@ -33,7 +33,6 @@ const Orders = () => {
             }
         })
     }
-
     const addDataToFirestore = async () => {
          await addDoc(collection(db, "orders"),{
             carId: order.id,

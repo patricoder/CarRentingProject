@@ -10,7 +10,9 @@
   border-radius: 30px;
   padding: 1rem 2rem;
   text-align: center;
-
+  @media(max-width: 700px) {
+    margin-top: 7rem;
+  }
   form {
     text-align: center;
     text-transform: uppercase;
@@ -43,6 +45,7 @@
       background-color: #2892d7;
       font-size: 1.5rem;
       border: none;
+      color:white;
     }
   }
 

@@ -3,7 +3,10 @@ import {NavLink} from "react-router-dom";
 import '../../SCSS/LoggedInNav.scss'
 const LoggedInNav = () => {
     const style={
-        borderBottom: "4px solid black"
+        backgroundColor :"#2892d7",
+        padding: ".25rem 1rem",
+        borderRadius: "4px",
+        color: "white"
     }
     return <div className={"navlist"}>
         <ul>

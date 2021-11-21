@@ -12,7 +12,7 @@ const App = () => {
     const [loggedIn, setLoggedIn] = useState(false);
 
     return <LoginContext.Provider value={{loggedIn, setLoggedIn}}>
-        <div className={"container"}>
+        <div>
             <Router>
                 <Header/>
                 <Switch>

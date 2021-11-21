@@ -1,37 +1,99 @@
-.welcomePage{
+.container{
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 1rem 1rem;
+}
+
+.welcomePage {
   margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-  .welcomePage__boxes{
+  .welcomePage__boxes {
     display: flex;
     justify-content: center;
     width: 100%;
     @media(max-width: 700px) {
-    flex-direction: column;
+      flex-direction: column;
       align-items: center;
     }
   }
-  .welcomePage__box{
+  .welcomePage__box {
     @media(max-width: 700px) {
-        margin-bottom: 1rem;
-        width: 60%;
+      margin-bottom: 1rem;
+      width: 60%;
       padding: 1rem 0;
-      }
+    }
     border-radius: 5px;
-    background-color: rgba(255,255,255,0.9);
+    background-color: rgba(255, 255, 255, 0.9);
     width: 33%;
     text-align: center;
     margin: 0 1rem;
-    h1,i,span{
+
+    h1, i, span {
       color: black;
     }
-    i{
+
+    i {
       font-size: 3rem;
       padding: 1rem 0;
     }
-    h1{
+
+    h1 {
       margin-bottom: 1rem;
+    }
+  }
+  &__footer {
+    background-color: #1b4353;
+    height: 100px;
+  }
+  &__newsletter{
+    background-color:#173753 ;
+    .newsletter{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @media(max-width: 700px){
+        flex-direction: column;
+      }
+      &__title{
+        padding: 0 1rem;
+        font-weight: 400;
+        font-size: 2rem;
+      }
+      &__form{
+        padding: 0 1rem;
+        input{
+          padding: .5rem 1rem;
+          outline: none;
+        }
+        button{
+          padding: .5rem 1rem;
+          background-color: #2892d7;
+          border:2px solid #2892d7 ;
+          color: white;
+        }
+      }
     }
 
   }
+  //.welcomePage__blog{
+  //  display: flex;
+  //  justify-content: center;
+  //  font-size: 3rem;
+  //  font-weight: 600;
+  //  position: relative;
+  //  &::before{
+  //    content: "";
+  //    width: 3rem;
+  //    border:2px solid white;
+  //    position: absolute;
+  //  }
+  //  &::after{
+  //    content: "";
+  //    width: 3rem;
+  //    border:2px solid white;
+  //    position: absolute;
+  //    transform: translate(-50%,-50%);
+  //    top: 50%;
+  //    left: 42%;
+  //  }
+  //}
 }

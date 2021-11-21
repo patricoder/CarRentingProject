@@ -18,8 +18,8 @@ const {loggedIn, setLoggedIn} = useContext(LoginContext);
                     <li><NavLink activeStyle={active} to='/signup'>Sign Up</NavLink></li>
                     </>
                 }
-
             </ul>
+
         </nav>
     </div>
 };
